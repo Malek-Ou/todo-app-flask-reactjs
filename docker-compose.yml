@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app       # Optional: for local dev, not for production
+    restart: always
+    container_name: backend
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"            # React builds to static files, served by nginx
+    restart: always
+    container_name: frontend

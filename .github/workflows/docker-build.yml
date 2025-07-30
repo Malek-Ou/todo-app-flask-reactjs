@@ -19,7 +19,7 @@ jobs:
       - name: Install frontend deps
         run: cd frontend && npm install
       - name: Run frontend tests
-        run: cd frontend && npm test -- --watchAll=false
+        run: cd frontend && npm test
 
       # Backend tests
       - name: Setup Python

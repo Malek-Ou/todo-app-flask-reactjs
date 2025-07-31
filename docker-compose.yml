@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+<<<<<<< HEAD
   backend:
     build: ./backend
     container_name: todo-backend
@@ -41,3 +42,33 @@ services:
 
 volumes:
   pgdata:
+=======
+  frontend:
+    image: yourhub/frontend:latest
+    restart: always
+    networks:
+      - app-network
+
+  backend:
+    image: yourhub/backend:latest
+    restart: always
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:stable-alpine
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+>>>>>>> 2f7c969ba3f2fe114be93cde95b3cdd2d97f9175
